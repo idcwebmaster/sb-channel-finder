@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="sb-channel-finder.css">
+</head>
+<body>
+  <div class="channel-finder-container">
+    <h2>WATCH</h2>
+    <h3>Super Bowl International Channel Finder</h3>
+    <div class="search-field">
+        <input type="text" id="search-channel" value="Enter Your Country" autocomplete="off"><br>
+        <input type="button" id="view-all" value="View All">
+    </div>
+    <div class="page-channel-finder" title="">
+      <div id="channel"></div>
+    </div>
+  </div>
+  <script src="sb-channel-finder.js"></script>
+  <script>
+  YUI.use('sb-channel-finder', 'event', 'node', function(Y){
+    var sbChannelFinder = new Y.SbChannelFinder({
+      srcNode: ".page-channel-finder",
+      tableNode: "#channel",
+      pollURL: 'http://www.nfl.com/static/content/static/config/superbowl/49/channel-finder/sb-channel-list.json'
+    });
+    sbChannelFinder.render();
+  });
+  </script>
+</body>
+</html>
